@@ -7,15 +7,18 @@ const router = require('./routes')
 
 
 const app = express()
-app.use(cors({
-    origin : process.env.FRONTEND_URL,
-    methods: ['GET', 'POST'],
-    credentials : true
-}))
+app.use(cors())
 
 
 app.use(express.json())
 app.use(cookieParser())
+
+app.use("/",(req,res)=>{
+    return res.json({
+        message:"welcome"
+    });
+}
+)
 
 app.use("/api",router)
 
