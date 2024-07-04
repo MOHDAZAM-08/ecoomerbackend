@@ -19,7 +19,7 @@ app.use(cookieParser())
 
 app.use("/api",router)
 
-const PORT = 5000 || process.env.PORT
+const PORT =  process.env.PORT || 5000 
 
 
 connectDB().then(()=>{
