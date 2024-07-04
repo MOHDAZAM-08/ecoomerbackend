@@ -13,12 +13,12 @@ app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 
-app.use("/",(req,res)=>{
-    return res.json({
-        message:"welcome"
-    });
-}
-)
+// app.use("/",(req,res)=>{
+//     return res.json({
+//         message:"welcome"
+//     });
+// }
+// )
 
 app.use("/api",router)
 
