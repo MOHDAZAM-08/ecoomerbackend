@@ -7,7 +7,7 @@ const router = require('./routes')
 
 
 const app = express()
-const allowedOrigins = process.env.FRONTEND_URL;
+const allowedOrigins = process.env.FRONTEND_URL || 'http://localhost:3000';
 
 app.use(cors({
   origin: function(origin, callback){
@@ -21,6 +21,9 @@ app.use(cors({
   },
   credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
+
+
+app.options('*', cors());
 
 
 app.use(express.json())
