@@ -7,12 +7,11 @@ const router = require('./routes')
 
 
 const app = express()
-const allowedOrigins = ['https://ecoomer-forntend.vercel.app'];
+const allowedOrigins = process.env.FRONTEND_URL;
 
 app.use(cors({
   origin: function(origin, callback){
-    // allow requests with no origin (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
+    if(!origin) return callback(null, true); // allow requests with no origin
     if(allowedOrigins.indexOf(origin) === -1){
       const msg = 'The CORS policy for this site does not ' +
                 'allow access from the specified Origin.';
@@ -20,9 +19,8 @@ app.use(cors({
     }
     return callback(null, true);
   },
-  credentials: true
+  credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
-
 
 
 app.use(express.json())
